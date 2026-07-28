@@ -656,6 +656,9 @@ object TunnelManager {
                 cmd.add("-captcha-mode")
                 cmd.add(params.captchaMode)
 
+                cmd.add("-obfs")
+                cmd.add(params.obfsMode)
+
                 val pb = ProcessBuilder(cmd)
                 pb.directory(context.filesDir)
                 pb.redirectErrorStream(true)
@@ -1749,5 +1752,6 @@ data class TunnelParams(
     val captchaMode: String = "auto",
     val captchaSolveMethod: String = "auto",
     val fingerprint: String = "firefox",
-    val clientIds: String = "6287487,8202606"
+    val clientIds: String = "6287487,8202606",
+    val obfsMode: String = "audio"
 )

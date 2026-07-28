@@ -15,6 +15,7 @@ suspend fun buildTunnelParamsFromSettings(context: Context): TunnelParams? {
     val captchaSolveMethod = store.captchaSolveMethod.first()
     val fingerprint = store.selectedFingerprint.first()
     val clientIds = store.activeClientIds.first()
+    val obfsMode = store.obfsMode.first()
 
     return if (linkMode) {
         val parts = WdttDeepLink.validate(store.wdttLink.first()).parts ?: return null
@@ -31,7 +32,8 @@ suspend fun buildTunnelParamsFromSettings(context: Context): TunnelParams? {
             captchaMode = captchaMode,
             captchaSolveMethod = captchaSolveMethod,
             fingerprint = fingerprint,
-            clientIds = clientIds
+            clientIds = clientIds,
+            obfsMode = obfsMode
         )
     } else {
         val basePeer = store.peer.first().trim()
@@ -57,7 +59,8 @@ suspend fun buildTunnelParamsFromSettings(context: Context): TunnelParams? {
             captchaMode = captchaMode,
             captchaSolveMethod = captchaSolveMethod,
             fingerprint = fingerprint,
-            clientIds = clientIds
+            clientIds = clientIds,
+            obfsMode = obfsMode
         )
     }
 }
@@ -79,6 +82,7 @@ suspend fun buildTunnelStartIntentFromSettings(context: Context): Intent? {
         putExtra("captcha_solve_method", params.captchaSolveMethod)
         putExtra("fingerprint", params.fingerprint)
         putExtra("client_ids", params.clientIds)
+        putExtra("obfs_mode", params.obfsMode)
     }
 }
 

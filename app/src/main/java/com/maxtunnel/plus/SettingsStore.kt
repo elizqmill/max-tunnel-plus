@@ -319,6 +319,7 @@ class SettingsStore(context: Context) {
 
         // ═══ Captcha Solve Mode ═══
         private val VKCALLS_PREFLIGHT = booleanPreferencesKey("vkcalls_preflight")
+        private val OBFS_MODE = stringPreferencesKey("obfs_mode") // "audio" or "video"
         private val CAPTCHA_MODE = stringPreferencesKey("captcha_mode") // "auto", "wv", or "rjs"
         private val CAPTCHA_SOLVE_METHOD = stringPreferencesKey("captcha_solve_method") // "manual" or "auto"
         private val CAPTCHA_WBV_SOLVE_METHOD = stringPreferencesKey("captcha_wbv_solve_method") // "manual" or "auto"
@@ -571,6 +572,11 @@ class SettingsStore(context: Context) {
     val captchaMode: Flow<String> = preferencesFlow.map { prefs ->
         val profile = prefs[ACTIVE_PROFILE] ?: 0
         prefs[getProfileKey(CAPTCHA_MODE, profile)] ?: "auto"
+    }
+    val obfsMode: Flow<String> = preferencesFlow.map { prefs ->
+        val profile = prefs[ACTIVE_PROFILE] ?: 0
+        val mode = prefs[getProfileKey(OBFS_MODE, profile)]
+        if (mode.isNullOrBlank()) "audio" else mode
     }
     val captchaSolveMethod: Flow<String> = preferencesFlow.map { prefs ->
         val profile = prefs[ACTIVE_PROFILE] ?: 0
@@ -1366,6 +1372,13 @@ class SettingsStore(context: Context) {
         dataStore.edit { prefs ->
             val profile = prefs[ACTIVE_PROFILE] ?: 0
             prefs[getProfileKey(CAPTCHA_MODE, profile)] = mode
+        }
+    }
+
+    suspend fun saveObfsMode(mode: String) {
+        dataStore.edit { prefs ->
+            val profile = prefs[ACTIVE_PROFILE] ?: 0
+            prefs[getProfileKey(OBFS_MODE, profile)] = mode
         }
     }
 

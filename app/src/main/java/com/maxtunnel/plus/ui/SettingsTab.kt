@@ -160,6 +160,7 @@ fun SettingsTabContent(
     var workersInput by rememberSaveable { mutableFloatStateOf(18f) }
     var showHashesDialog by rememberSaveable { mutableStateOf(false) }
     var autoCaptchaEnabled by rememberSaveable { mutableStateOf(true) }
+    var obfsMode by rememberSaveable { mutableStateOf("audio") }
     var manualPortsEnabled by rememberSaveable { mutableStateOf(false) }
     var showPowerHelp by rememberSaveable { mutableStateOf(false) }
     var showVkCallsHelp by rememberSaveable { mutableStateOf(false) }
@@ -234,7 +235,8 @@ fun SettingsTabContent(
         // комбинированная автоцепочка и немедленный ручной WebView.
         // Устаревшие режимы rjs и wv+auto работают как автоматические.
         autoCaptchaEnabled = captchaMode != "wv" || captchaMethod != "manual"
-        
+        obfsMode = settingsStore.obfsMode.first()
+
         initialized = true
     }
 
@@ -683,6 +685,36 @@ fun SettingsTabContent(
                                 }
                             }
                         )
+                    }
+
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 4.dp),
+                        color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+                    )
+
+                    // — Режим обфускации —
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            "Обфускация",
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Row {
+                            ProtocolChip("Аудио", obfsMode == "audio", enabled = !tunnelRunning) {
+                                obfsMode = "audio"
+                                scope.launch { settingsStore.saveObfsMode("audio") }
+                            }
+                            Spacer(modifier = Modifier.width(8.dp))
+                            ProtocolChip("Видео", obfsMode == "video", enabled = !tunnelRunning) {
+                                obfsMode = "video"
+                                scope.launch { settingsStore.saveObfsMode("video") }
+                            }
+                        }
                     }
 
                     HorizontalDivider(

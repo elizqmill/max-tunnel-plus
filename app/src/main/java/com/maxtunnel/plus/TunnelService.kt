@@ -122,7 +122,8 @@ class TunnelService : Service() {
                     captchaMode = sanitizeCaptchaMode(intent.getStringExtra("captcha_mode")),
                     captchaSolveMethod = intent.getStringExtra("captcha_solve_method") ?: "auto",
                     fingerprint = intent.getStringExtra("fingerprint") ?: "firefox",
-                    clientIds = intent.getStringExtra("client_ids") ?: "6287487,8202606"
+                    clientIds = intent.getStringExtra("client_ids") ?: "6287487,8202606",
+                    obfsMode = intent.getStringExtra("obfs_mode") ?: "audio"
                 )
                 lastStartParams = params
                 TunnelManager.scope.launch(Dispatchers.Main) {
