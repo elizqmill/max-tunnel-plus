@@ -1718,7 +1718,7 @@ private fun AccessResultDialog(
                 if (link == null) {
                     Text(noLinkText, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 } else {
-                    Text("Ссылка содержит пароль и хеш звонка. Не публикуйте её.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) её.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                    Text("Ссылка содержит пароль и хеш звонка. Не публикуйте её.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
                     FlowRow(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
@@ -2517,7 +2517,7 @@ private fun ChangeClientPasswordDialog(
                     )
                 }
                 Text(
-                    "Старые ссылки перестанут работать, активное соединение этого клиента завершится. Название, срок, хеши звонков и привязка устройства сохранятся; остальные клиенты не затрагиваются.",звание, срок, VK-хеши и привязка устройства сохранятся; остальные клиенты не затрагиваются.",
+                    "Старые ссылки перестанут работать, активное соединение этого клиента завершится. Название, срок, хеши звонков и привязка устройства сохранятся; остальные клиенты не затрагиваются.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.error
                 )
@@ -2618,7 +2618,7 @@ private fun CreateClientWizardDialog(
                                     OutlinedTextField(
                                         value = vkHash,
                                         onValueChange = { vkHash = it },
-                                        label = { Text("Хеш или ссылка") },
+                                        label = { Text("Хеш или ссылка звонка") },
                                         minLines = 2,
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -2837,7 +2837,7 @@ private fun ClientQrDialog(
                 Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                     Image(bitmap = bitmap.asImageBitmap(), contentDescription = "QR-код WDTT Plus", modifier = Modifier.fillMaxWidth())
                 }
-                Text("QR содержит пароль и хеш звонка. Не публикуйте изображение.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)е изображение.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                Text("QR содержит пароль и хеш звонка. Не публикуйте изображение.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(
                         modifier = Modifier.weight(1f).heightIn(min = 48.dp),
