@@ -370,6 +370,9 @@ fun SettingsTabContent(
             putExtra("client_ids", activeClientIds)
             putExtra("obfs_mode", obfsMode)
         }
+        if (Build.VERSION.SDK_INT >= 26) context.startForegroundService(intent)
+        else context.startService(intent)
+    }
 
     val vpnPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.StartActivityForResult()
