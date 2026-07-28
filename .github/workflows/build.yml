@@ -89,7 +89,11 @@ jobs:
           path: app/src/main/jniLibs
 
       - name: Assemble Release APK
-        run: ./gradlew :app:assembleRelease
+        run: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          cat local.properties
+          ./gradlew :app:assembleRelease
 
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
