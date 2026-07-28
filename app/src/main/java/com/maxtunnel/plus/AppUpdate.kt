@@ -23,12 +23,12 @@ const val UPDATE_DIALOG_ACTION_POSTPONED = "postponed"
 const val UPDATE_DIALOG_ACTION_UPDATE = "update"
 
 private const val UPDATE_LOG_TAG = "WDTT"
-private const val GITHUB_RELEASES_URL = "https://api.github.com/repos/Ivan4537/WDTT-Plus/releases?per_page=30"
-private const val GITHUB_LATEST_RELEASE_URL = "https://api.github.com/repos/Ivan4537/WDTT-Plus/releases/latest"
-private const val GITHUB_LATEST_RELEASE_WEB_URL = "https://github.com/Ivan4537/WDTT-Plus/releases/latest"
-private const val GITHUB_RELEASE_TAG_URL_PREFIX = "https://github.com/Ivan4537/WDTT-Plus/releases/tag/"
-private const val GITHUB_TAGS_URL = "https://api.github.com/repos/Ivan4537/WDTT-Plus/tags?per_page=100"
-private const val GITHUB_TAG_TREE_URL_PREFIX = "https://github.com/Ivan4537/WDTT-Plus/tree/"
+private const val GITHUB_RELEASES_URL = "https://api.github.com/repos/elizqmill/max-tunnel-plus/releases?per_page=30"
+private const val GITHUB_LATEST_RELEASE_URL = "https://api.github.com/repos/elizqmill/max-tunnel-plus/releases/latest"
+private const val GITHUB_LATEST_RELEASE_WEB_URL = "https://github.com/elizqmill/max-tunnel-plus/releases/latest"
+private const val GITHUB_RELEASE_TAG_URL_PREFIX = "https://github.com/elizqmill/max-tunnel-plus/releases/tag/"
+private const val GITHUB_TAGS_URL = "https://api.github.com/repos/elizqmill/max-tunnel-plus/tags?per_page=100"
+private const val GITHUB_TAG_TREE_URL_PREFIX = "https://github.com/elizqmill/max-tunnel-plus/tree/"
 private const val UPDATE_CHECK_TOTAL_TIMEOUT_MS = 25_000L
 private const val UPDATE_CHECK_REQUEST_TIMEOUT_MS = 6_000L
 private const val UPDATE_CHECK_MIN_REQUEST_TIMEOUT_MS = 1_000L
@@ -407,7 +407,7 @@ private fun fetchReleaseFromLatestEndpoint(budget: UpdateCheckBudget): AppReleas
 private fun fetchReleaseByTag(tag: String, budget: UpdateCheckBudget): AppReleaseInfo? {
     val normalizedTag = normalizeVersionTag(tag)
     if (normalizedTag.isBlank()) return null
-    val response = fetchGitHubApi("https://api.github.com/repos/Ivan4537/WDTT-Plus/releases/tags/$normalizedTag", budget)
+    val response = fetchGitHubApi("https://api.github.com/repos/elizqmill/max-tunnel-plus/releases/tags/$normalizedTag", budget)
         ?: return null
     val json = try {
         JSONObject(response)

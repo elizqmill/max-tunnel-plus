@@ -28,7 +28,7 @@
         android:name=".WdttApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="WDTT Plus"
+        android:label="Max Tunnel Plus"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WDTTClient">
@@ -103,7 +103,7 @@
             android:name=".QuickToggleTileService"
             android:exported="true"
             android:icon="@drawable/ic_tile_logo"
-            android:label="WDTT Plus"
+            android:label="Max Tunnel Plus"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
@@ -123,7 +123,7 @@
 
         <receiver
             android:name=".VpnWidgetProvider"
-            android:label="WDTT Plus ВПН Виджет"
+            android:label="Max Tunnel Plus Виджет"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -136,7 +136,7 @@
 
         <receiver
             android:name=".VpnCompactWidgetProvider"
-            android:label="WDTT Plus — компактный виджет"
+            android:label="Max Tunnel Plus — компактный виджет"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
