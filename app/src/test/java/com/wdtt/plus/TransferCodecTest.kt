@@ -1,4 +1,4 @@
-package com.wdtt.plus
+package com.maxtunnel.plus
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

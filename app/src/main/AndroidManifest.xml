@@ -127,7 +127,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.wdtt.plus.ACTION_WIDGET_TOGGLE" />
+                <action android:name="com.maxtunnel.plus.ACTION_WIDGET_TOGGLE" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"

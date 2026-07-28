@@ -1,4 +1,4 @@
-package com.wdtt.plus
+package com.maxtunnel.plus
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,10 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.wdtt.plus.ui.DeployTab
-import com.wdtt.plus.ui.InfoTab
-import com.wdtt.plus.ui.LogsTab
-import com.wdtt.plus.ui.SettingsTab
+import com.maxtunnel.plus.ui.DeployTab
+import com.maxtunnel.plus.ui.InfoTab
+import com.maxtunnel.plus.ui.LogsTab
+import com.maxtunnel.plus.ui.SettingsTab
 
 @Composable
 private fun PreviewScreen(content: @Composable () -> Unit) {

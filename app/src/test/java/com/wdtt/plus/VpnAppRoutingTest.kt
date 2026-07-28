@@ -1,11 +1,11 @@
-package com.wdtt.plus
+package com.maxtunnel.plus
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class VpnAppRoutingTest {
-    private val ownPackage = "com.wdtt.plus"
+    private val ownPackage = "com.maxtunnel.plus"
     private val installed = setOf(
         ownPackage,
         "com.vkontakte.android",

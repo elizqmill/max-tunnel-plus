@@ -15,11 +15,11 @@ if (localPropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.wdtt.plus"
+    namespace = "com.maxtunnel.plus"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.wdtt.plus"
+        applicationId = "com.maxtunnel.plus"
         minSdk = 28
         targetSdk = 35
         versionCode = 11

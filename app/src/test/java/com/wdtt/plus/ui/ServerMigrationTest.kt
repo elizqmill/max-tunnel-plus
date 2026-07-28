@@ -1,4 +1,4 @@
-package com.wdtt.plus.ui
+package com.maxtunnel.plus.ui
 
 import org.json.JSONArray
 import org.json.JSONObject

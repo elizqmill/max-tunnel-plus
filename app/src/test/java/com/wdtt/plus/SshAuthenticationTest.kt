@@ -1,4 +1,4 @@
-package com.wdtt.plus
+package com.maxtunnel.plus
 
 import com.jcraft.jsch.JSch
 import com.jcraft.jsch.KeyPair

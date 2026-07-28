@@ -1,4 +1,4 @@
-package com.wdtt.plus.ui
+package com.maxtunnel.plus.ui
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
