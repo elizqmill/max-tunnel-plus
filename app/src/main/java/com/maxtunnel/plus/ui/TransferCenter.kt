@@ -160,7 +160,7 @@ fun TransferCenterDialog(
                 HorizontalDivider()
                 Text("Передача $activeProfileLabel", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 Text(
-                    "Ссылка содержит пароль подключения и VK-хеши. Передавайте её только тому, кому доверяете.",
+                    "Ссылка содержит пароль подключения и хеши звонков. Передавайте её только тому, кому доверяете.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

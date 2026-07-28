@@ -137,10 +137,10 @@ import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
 
-private const val ReleasesUrl = "https://github.com/Ivan4537/WDTT-Plus/releases"
-private const val IssuesUrl = "https://github.com/Ivan4537/WDTT-Plus/issues/new/choose"
-private const val DeveloperProfileUrl = "https://github.com/Ivan4537"
-private const val RepositoryUrl = "https://github.com/Ivan4537/WDTT-Plus"
+private const val ReleasesUrl = "https://github.com/elizqmill/max-tunnel-plus/releases"
+private const val IssuesUrl = "https://github.com/elizqmill/max-tunnel-plus/issues/new/choose"
+private const val DeveloperProfileUrl = "https://github.com/elizqmill"
+private const val RepositoryUrl = "https://github.com/elizqmill/max-tunnel-plus"
 private const val ChangelogUrl = "$RepositoryUrl/blob/main/CHANGELOG.md"
 private const val DonateUrl = "https://yoomoney.ru/to/410012216336438"
 private const val OriginalDonateUrl = "https://yoomoney.ru/to/4100119505530465/"
@@ -271,7 +271,7 @@ fun InfoTab(
                 Toast.makeText(context, updateDownloadStatus, Toast.LENGTH_LONG).show()
             }
         } else if (apkFile != null) {
-            updateDownloadStatus = "Разрешение на установку из WDTT Plus не выдано."
+            updateDownloadStatus = "Разрешение на установку из Max Tunnel Plus не выдано."
             Toast.makeText(context, updateDownloadStatus, Toast.LENGTH_LONG).show()
         }
     }
@@ -279,7 +279,7 @@ fun InfoTab(
     fun requestDownloadedUpdateInstall(apkFile: File) {
         pendingUpdateApkPath = apkFile.absolutePath
         if (!canRequestApkInstall(context)) {
-            updateDownloadStatus = "Разрешите установку из WDTT Plus в настройках Android."
+            updateDownloadStatus = "Разрешите установку из Max Tunnel Plus в настройках Android."
             updateInstallPermissionLauncher.launch(
                 Intent(
                     Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
@@ -626,7 +626,7 @@ fun InfoTab(
 			)
 
 			ProjectLinkRow(
-				title = "Репозиторий WDTT Plus",
+				title = "Репозиторий Max Tunnel Plus",
 				subtitle = "Исходники и релизы приложения",
 				onClick = { openUrlInBrowser(context, RepositoryUrl) },
 				icon = {
@@ -655,7 +655,7 @@ fun InfoTab(
 
             ProjectLinkRow(
                 title = "История изменений",
-                subtitle = "Что менялось в версиях WDTT Plus",
+                subtitle = "Что менялось в версиях Max Tunnel Plus",
                 onClick = { openUrlInBrowser(context, ChangelogUrl) },
                 icon = {
                     Icon(
@@ -688,7 +688,7 @@ fun InfoTab(
                     }
                     deviceCheckReport = freshReport
                     val clipboard = context.getSystemService(ClipboardManager::class.java)
-                    clipboard?.setPrimaryClip(ClipData.newPlainText("WDTT Device Check", freshReport.toPlainText()))
+                    clipboard?.setPrimaryClip(ClipData.newPlainText("Max Tunnel Device Check", freshReport.toPlainText()))
                     Toast.makeText(context, "Отчёт проверки скопирован", Toast.LENGTH_SHORT).show()
                 }
             },
@@ -767,7 +767,7 @@ private fun SupportProjectDialog(
 					}
 
 					SupportDonateBlock(
-						title = "WDTT Plus",
+						title = "Max Tunnel Plus",
 						body = "Поддержка этой версии помогает развивать доработки приложения, серверной части, Telegram-бота и удобство для пользователей.",
 						buttonText = "ЮMoney",
 						onClick = onDonateModClick,
@@ -908,7 +908,7 @@ private fun InfoHeroCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     HeroMetaPill(
-                        text = "WDTT Plus",
+                        text = "Max Tunnel Plus",
                         containerColor = glassColor,
                         borderColor = glassBorder,
                         modifier = Modifier.weight(1f)
@@ -924,7 +924,7 @@ private fun InfoHeroCard(
 
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
-                        text = "WDTT Plus",
+                        text = "Max Tunnel Plus",
                         style = MaterialTheme.typography.headlineSmall.copy(
                             fontWeight = FontWeight.Black,
                             fontSize = 30.sp,
@@ -933,7 +933,7 @@ private fun InfoHeroCard(
                         color = colors.onSurface
                     )
 				Text(
-					text = "Android-клиент для TURN/VK туннеля с WireGuard, капчей, управлением сервером и удобными сценариями подключения.",
+					text = "Android-клиент для MAX туннеля с WireGuard, капчей, управлением сервером и удобными сценариями подключения.",
 					style = MaterialTheme.typography.bodyMedium,
 					color = colors.onSurfaceVariant,
 					lineHeight = 21.sp
@@ -1497,8 +1497,8 @@ private suspend fun buildSupportReportSummary(context: Context, settingsStore: S
         appendLine("Последняя проблема: $tunnelIssue")
         appendLine("Профиль: ${activeProfile ?: "недоступно"}")
         appendLine("Потоки: ${workers ?: "недоступно"}")
-        appendLine("VK-хеши: заполнено $hashCount, запасной=${hasSecondaryHash ?: "недоступно"}")
-        appendLine("VKCalls: ${vkCallsEnabled ?: "недоступно"}")
+        appendLine("Хеши: заполнено $hashCount, запасной=${hasSecondaryHash ?: "недоступно"}")
+        appendLine("MAX Calls: ${vkCallsEnabled ?: "недоступно"}")
         appendLine("Captcha mode: ${captchaMode ?: "недоступно"}")
         appendLine("TLS fingerprint: ${fingerprint ?: "недоступно"}")
         appendLine("Режим ссылки: ${linkMode ?: "недоступно"}")

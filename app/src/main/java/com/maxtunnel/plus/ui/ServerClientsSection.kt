@@ -1024,7 +1024,7 @@ fun ServerClientsSection(
                 title = { DialogTitle("Экспорт невозможен", { exportClient = null }) },
                 text = {
                     Text(
-                        transferResult.exceptionOrNull()?.message ?: "Проверьте пароль и VK-хеши клиента.",
+                        transferResult.exceptionOrNull()?.message ?: "Проверьте пароль и хеши звонков клиента.",
                         color = MaterialTheme.colorScheme.error
                     )
                 },
@@ -1119,7 +1119,7 @@ fun ServerClientsSection(
             title = "Клиент создан",
             password = client.password,
             link = link,
-            noLinkText = "VK-хеш не задан. Пароль уже работает; ссылку, QR и файл можно создать после добавления хеша в «Подробнее».",
+            noLinkText = "Хеш не задан. Пароль уже работает; ссылку, QR и файл можно создать после добавления хеша в «Подробнее».",
             onDismiss = { createdClient = null },
             onCopyPassword = { copyText(context, "Пароль WDTT", client.password) },
             onCopyLink = { link?.let { copyText(context, "Ссылка WDTT", it) } },
@@ -1157,7 +1157,7 @@ fun ServerClientsSection(
             statusText = "Клиент импортирован и найден в списке.",
             password = client.password,
             link = link,
-            noLinkText = "VK-хеш не задан. Клиент добавлен; хеш можно указать в «Подробнее».",
+            noLinkText = "Хеш не задан. Клиент добавлен; хеш можно указать в «Подробнее».",
             onDismiss = { importedClient = null },
             onCopyPassword = { copyText(context, "Пароль импортированного клиента", client.password) },
             onCopyLink = { link?.let { copyText(context, "Ссылка WDTT", it) } },
@@ -1194,7 +1194,7 @@ fun ServerClientsSection(
             title = "Пароль изменён",
             password = client.password,
             link = link,
-            noLinkText = "VK-хеш не задан. Новый пароль уже работает; добавьте хеш в «Подробнее», чтобы сформировать ссылку.",
+            noLinkText = "Хеш не задан. Новый пароль уже работает; добавьте хеш в «Подробнее», чтобы сформировать ссылку.",
             onDismiss = { changedPasswordClient = null },
             onCopyPassword = { copyText(context, "Новый пароль WDTT", client.password) },
             onCopyLink = { link?.let { copyText(context, "Новая ссылка WDTT", it) } },
@@ -1394,7 +1394,7 @@ private fun ServerClientCard(
             )
             if (client.vkHash.isBlank()) {
                 Text(
-                    "VK-хеш не задан: быструю ссылку/QR создать нельзя, пока не обновить хеш.",
+                    "Хеш не задан: быструю ссылку/QR создать нельзя, пока не обновить хеш.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.error
                 )
@@ -1488,7 +1488,7 @@ private fun ClientFiltersPanel(
                 ClientFilterChip("Бессрочные", expiryFilter == ClientExpiryFilter.Unlimited) { onExpiryFilterChange(ClientExpiryFilter.Unlimited) }
             }
 
-            FilterGroupTitle("VK-хеш")
+            FilterGroupTitle("Хеш звонка")
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 ClientFilterChip("Все", vkHashFilter == ClientVkHashFilter.All) { onVkHashFilterChange(ClientVkHashFilter.All) }
                 ClientFilterChip("С хешем", vkHashFilter == ClientVkHashFilter.Present) { onVkHashFilterChange(ClientVkHashFilter.Present) }
@@ -1718,7 +1718,7 @@ private fun AccessResultDialog(
                 if (link == null) {
                     Text(noLinkText, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 } else {
-                    Text("Ссылка содержит пароль и VK-хеш. Не публикуйте её.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                    Text("Ссылка содержит пароль и хеш звонка. Не публикуйте её.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) её.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
                     FlowRow(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
@@ -1796,7 +1796,7 @@ private fun ClientDetailsDialog(
                                     InfoLine("Статус", when (client.status) { "active" -> "активен"; "deactivated" -> "отключён"; "expired" -> "истёк"; else -> client.status })
                                     InfoLine("Срок", formatExpiry(client.expiresAt))
                                     InfoLine("Порты", client.ports)
-                                    InfoLine("VK-хеш", client.vkHash.ifBlank { "не задан" })
+                                    InfoLine("Хеш звонка", client.vkHash.ifBlank { "не задан" })
                                     HorizontalDivider()
                                     TrafficPeriodBlock(client.traffic)
                                 }
@@ -1855,7 +1855,7 @@ private fun ClientDetailsDialog(
                                     OutlinedTextField(
                                         value = hash,
                                         onValueChange = { hash = it },
-                                        label = { Text("VK-хеш или ссылка") },
+                                        label = { Text("Хеш или ссылка звонка") },
                                         minLines = 2,
                                         modifier = Modifier.fillMaxWidth()
                                     )
@@ -1974,8 +1974,8 @@ private fun ServerToolsDialog(
 	                                    HorizontalDivider()
 	                                    Text("Сохранено на сервере", fontWeight = FontWeight.Bold)
 	                                    InfoLine("Состояние", if (state.adminProfile.hasSavedFields) "сохранён ${formatDateTime(state.adminProfile.updatedAt)}" else "ещё не сохранён")
-	                                    InfoLine("VK-хеши", secretPresenceLabel(state.adminProfile.vkHashes))
-	                                    InfoLine("Резервный VK-хеш", secretPresenceLabel(state.adminProfile.secondaryVkHash))
+	                                    InfoLine("Хеши звонков", secretPresenceLabel(state.adminProfile.vkHashes))
+	                                    InfoLine("Резервный хеш звонка", secretPresenceLabel(state.adminProfile.secondaryVkHash))
 	                                    InfoLine("Порты", state.adminProfile.ports)
 	                                    InfoLine("Потоки", state.adminProfile.workersPerHash.toString())
 	                                    InfoLine("Протокол", state.adminProfile.protocol)
@@ -1983,8 +1983,8 @@ private fun ServerToolsDialog(
 	                                    InfoLine("No DNS", if (state.adminProfile.noDns) "включено" else "выключено")
 	                                    HorizontalDivider()
 	                                    Text("Будет записано при установке", fontWeight = FontWeight.Bold)
-	                                    InfoLine("VK-хеши", secretPresenceLabel(localAdminProfile.vkHashes))
-	                                    InfoLine("Резервный VK-хеш", secretPresenceLabel(localAdminProfile.secondaryVkHash))
+	                                    InfoLine("Хеши звонков", secretPresenceLabel(localAdminProfile.vkHashes))
+	                                    InfoLine("Резервный хеш звонка", secretPresenceLabel(localAdminProfile.secondaryVkHash))
 	                                    InfoLine("Порты", localAdminProfile.ports)
 	                                    InfoLine("Потоки", localAdminProfile.workersPerHash.toString())
 	                                    InfoLine("Протокол", localAdminProfile.protocol)
@@ -2371,7 +2371,7 @@ private fun ClientTransferExportDialog(
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Text("Клиент: ${client.displayName()}", fontWeight = FontWeight.Bold)
-                Text("Переносятся пароль, название, VK-хеши, срок и состояние доступа.")
+                Text("Переносятся пароль, название, хеши звонков, срок и состояние доступа.")
                 Text(
                     "Не переносятся устройство, WireGuard-ключи, адрес, порты, трафик и история. На новом сервере используются его настройки, а устройство привяжется при первом подключении.",
                     style = MaterialTheme.typography.bodySmall,
@@ -2439,7 +2439,7 @@ private fun ClientImportConfirmDialog(
                 InfoLine("Пароль", "${payload.password.take(3)}••••${payload.password.takeLast(3)}")
                 InfoLine("Срок", formatExpiry(payload.expiresAt))
                 InfoLine("Состояние", if (payload.deactivated) "Отключён" else "Активен")
-                InfoLine("VK-хеши", if (payload.vkHash.isBlank()) "не заданы" else "заданы")
+                InfoLine("Хеши звонков", if (payload.vkHash.isBlank()) "не заданы" else "заданы")
                 HorizontalDivider()
                 InfoLine("Новый сервер", targetHost.ifBlank { "не определён" })
                 InfoLine("Порты нового сервера", targetPorts.ifBlank { "не заданы" })
@@ -2517,7 +2517,7 @@ private fun ChangeClientPasswordDialog(
                     )
                 }
                 Text(
-                    "Старые ссылки перестанут работать, активное соединение этого клиента завершится. Название, срок, VK-хеши и привязка устройства сохранятся; остальные клиенты не затрагиваются.",
+                    "Старые ссылки перестанут работать, активное соединение этого клиента завершится. Название, срок, хеши звонков и привязка устройства сохранятся; остальные клиенты не затрагиваются.",звание, срок, VK-хеши и привязка устройства сохранятся; остальные клиенты не затрагиваются.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.error
                 )
@@ -2613,7 +2613,7 @@ private fun CreateClientWizardDialog(
                                     )
                                 }
                                 ClientWizardStep.Hash -> {
-                                    Text("VK-хеш", fontWeight = FontWeight.Bold)
+                                    Text("Хеш звонка", fontWeight = FontWeight.Bold)
                                     Text("Нужен для быстрой ссылки, QR и файла. Можно вставить сам хеш или ссылку приглашения.", style = MaterialTheme.typography.bodySmall)
                                     OutlinedTextField(
                                         value = vkHash,
@@ -2679,7 +2679,7 @@ private fun CreateClientWizardDialog(
                                     Text("Проверка", fontWeight = FontWeight.Bold)
                                     Text("Срок: ${if (days == 0) "бессрочно" else "$days дн."}")
                                     Text("Название: ${label.ifBlank { "без имени" }}")
-                                    Text("VK-хеш: ${if (vkHash.isBlank()) "не задан" else "задан"}")
+                                    Text("Хеш звонка: ${if (vkHash.isBlank()) "не задан" else "задан"}")
                                     Text("Порты: $effectivePorts")
                                     Text("Пароль: ${if (useAutoPassword) "будет создан автоматически" else customPassword}")
                                     Text(
@@ -2837,7 +2837,7 @@ private fun ClientQrDialog(
                 Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                     Image(bitmap = bitmap.asImageBitmap(), contentDescription = "QR-код WDTT Plus", modifier = Modifier.fillMaxWidth())
                 }
-                Text("QR содержит пароль и VK-хеш. Не публикуйте изображение.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                Text("QR содержит пароль и хеш звонка. Не публикуйте изображение.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)е изображение.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(
                         modifier = Modifier.weight(1f).heightIn(min = 48.dp),

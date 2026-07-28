@@ -368,10 +368,8 @@ fun SettingsTabContent(
             putExtra("captcha_solve_method", effectiveCaptchaSolveMethod)
             putExtra("fingerprint", activeFingerprint)
             putExtra("client_ids", activeClientIds)
+            putExtra("obfs_mode", obfsMode)
         }
-        if (Build.VERSION.SDK_INT >= 26) context.startForegroundService(intent)
-        else context.startService(intent)
-    }
 
     val vpnPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -699,7 +697,7 @@ fun SettingsTabContent(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            "Обфускация",
+                            "Маскировка",
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.weight(1f)
@@ -1065,7 +1063,7 @@ private fun PowerHelpDialog(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
-                        "Сейчас: $currentWorkers. Доступный диапазон для текущего числа VK-хешей: $minWorkers-$maxWorkers.",
+                        "Сейчас: $currentWorkers. Доступный диапазон для текущего числа хешей звонков: $minWorkers-$maxWorkers.",
                         style = MaterialTheme.typography.bodySmall,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.onSurface
@@ -1266,7 +1264,9 @@ fun ImportantInfoDialog(onDismiss: () -> Unit) {
                         "В боковых настройках доступны VPN 1, VPN 2 и VPN 3. Короткое нажатие переключает профиль, долгое нажатие позволяет переименовать его."
                     )
                     InfoSection(
-                        "VK-хеши",
+                        "Хеши звонков",
+                        "Хеш звонка нужен для работы туннеля. В настройке хешей можно проверить каждый слот, скопировать отдельный хеш или все заполненные хеши сразу."
+                    )хеши",
                         "VK-хеш нужен для работы туннеля. В настройке VK-хешей можно проверить каждый слот, скопировать отдельный хеш или все заполненные хеши сразу."
                     )
                     InfoSection(
@@ -1283,7 +1283,7 @@ fun ImportantInfoDialog(onDismiss: () -> Unit) {
                     )
                     InfoSection(
                         "Капча и мощность",
-                        "Авто-режим старается пройти капчу сам. Несколько VK-хешей распределяют нагрузку, а мощность лучше держать умеренной: чем она выше, тем больше расход батареи и шанс чаще видеть капчу."
+                        "Авто-режим старается пройти капчу сам. Несколько хешей звонков распределяют нагрузку, а мощность лучше держать умеренной: чем она выше, тем больше расход батареи и шанс чаще видеть капчу."
                     )
 
                     Spacer(Modifier.height(20.dp))

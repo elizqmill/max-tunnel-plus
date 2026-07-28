@@ -59,13 +59,13 @@ fun AppUpdateDialog(
     val canDownloadInApp = !isTagOnly && apkAsset != null
     val description = when {
         isSameVersionFix && canDownloadInApp ->
-            "Версия ${release.versionTag} не изменилась, но APK в релизе обновлён. Это исправление текущей версии; WDTT Plus скачает подходящий файл и откроет установку Android."
+            "Версия ${release.versionTag} не изменилась, но APK в релизе обновлён. Это исправление текущей версии; Max Tunnel Plus скачает подходящий файл и откроет установку Android."
         isSameVersionFix ->
             "Версия ${release.versionTag} не изменилась, но APK в релизе обновлён. Не удалось подобрать файл для этого устройства, можно открыть страницу релиза."
         isTagOnly ->
             "На GitHub обнаружен более новый tag ${release.versionTag}. Похоже, опубликованный release ещё не догнал его."
         canDownloadInApp ->
-            "Вышла новая версия приложения ${release.versionTag}. WDTT Plus скачает подходящий APK и откроет системное окно установки Android."
+            "Вышла новая версия приложения ${release.versionTag}. Max Tunnel Plus скачает подходящий APK и откроет системное окно установки Android."
         else ->
             "Вышла новая версия приложения ${release.versionTag}. Не удалось подобрать APK для этого устройства, можно открыть страницу релиза."
     }

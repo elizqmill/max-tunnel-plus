@@ -65,7 +65,7 @@ fun DeviceCompatibilityDialog(
                 DeviceCheckItem(
                     title = "Проверка устройства",
                     status = "замечаний нет",
-                    details = "Архитектурных проблем для запуска WDTT Plus не найдено.",
+                    details = "Архитектурных проблем для запуска Max Tunnel Plus не найдено.",
                     severity = DeviceCheckSeverity.Ok
                 )
             )
