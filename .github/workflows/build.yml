@@ -115,6 +115,9 @@ jobs:
           go mod tidy
           CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o app/src/main/assets/server .
 
+      - name: Decode keystore
+        run: echo "${{ secrets.KEYSTORE_B64 }}" | base64 -d > release.keystore
+
       - name: Assemble Release APK
         run: |
           chmod +x ./gradlew
