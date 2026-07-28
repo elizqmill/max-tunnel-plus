@@ -255,7 +255,12 @@ tasks.register<Exec>("nameReleaseApks") {
             version="${'$'}4"
             mkdir -p "${'$'}named_dir"
             for abi in universal arm64-v8a armeabi-v7a x86_64; do
-                cp "${'$'}release_dir/app-${'$'}abi-release.apk" "${'$'}named_dir/${'$'}app_name-v${'$'}version-${'$'}abi-release.apk"
+                src="${'$'}release_dir/app-${'$'}abi-release.apk"
+                if [ -f "${'$'}src" ]; then
+                    cp "${'$'}src" "${'$'}named_dir/${'$'}app_name-v${'$'}version-${'$'}abi-release.apk"
+                else
+                    echo "WARNING: ${'$'}src not found, skipping"
+                fi
             done
         """.trimIndent(),
         "bash",
